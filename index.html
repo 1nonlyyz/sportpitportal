@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спортпит Портал - Продажа спортивного питания</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Иконки Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500;600&display=swap"
+        rel="stylesheet">
+    <!-- AOS CSS для анимации -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+body {
+    scroll-behavior: smooth;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f0f0f0;
+    overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+}
+
+html {
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Навигационная панель */
+.navbar {
+    background-color: #333;
+    transition: background-color 0.5s, padding 0.5s;
+    padding: 1rem 0; /* Уменьшенный паддинг */
+    margin-bottom: 0; /* Убираем нижний отступ для навигационной панели */
+}
+
+.navbar.scrolled {
+    background-color: #444 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Цвет текста для логотипа и навигации */
+.navbar .navbar-brand .main-title,
+.navbar .navbar-brand .subtitle,
+.navbar .navbar-nav .nav-link {
+    color: #fff !important;
+}
+
+.navbar .navbar-nav .nav-link {
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Стили для логотипа */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 80px;
+    margin-right: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-text .main-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.brand-text .subtitle {
+    font-size: 0.85rem;
+    color: #ffc107;
+}
+
+/* Главная секция hero */
+#hero {
+    position: relative;
+    min-height: 100vh; /* Минимальная высота экрана */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрируем контент по вертикали */
+    align-items: center; /* Центрируем контент по горизонтали */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Видео на фоне */
+#hero .bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Оверлей затемнения */
+#hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+/* Карусельная секция */
+#hero .carousel {
+    flex-grow: 1; /* Растягиваем карусель, чтобы она занимала всё доступное пространство */
+    position: relative;
+    width: 100%;
+}
+
+/* Элементы внутри карусели */
+#hero .carousel-inner {
+    height: 100%;
+}
+
+#hero .carousel-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+#hero .carousel-item.active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Контент внутри карусели */
+#hero .carousel-caption {
+    position: relative; /* Ставим относительное позиционирование вместо абсолютного */
+    z-index: 2;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+#hero .carousel-caption h1,
+#hero .carousel-caption p {
+    color: #ffffff;
+}
+
+#hero .carousel-caption .btn {
+    margin-top: 20px;
+    background-color: #ffc107;
+    border: none;
+    color: #000;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+/* Видео на фоне */
+#hero .bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Оверлей затемнения */
+#hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+/* Карусельная секция */
+#hero .carousel {
+    height: 100%;
+    position: relative;
+}
+
+/* Элементы внутри карусели */
+#hero .carousel-inner {
+    height: 125%;
+}
+
+#hero .carousel-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+#hero .carousel-item.active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Контент внутри карусели */
+#hero .carousel-caption {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+}
+
+#hero .carousel-caption h1,
+#hero .carousel-caption p {
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+#hero .carousel-caption .btn {
+    margin-top: 20px;
+    background-color: #ffc107;
+    border: none;
+    color: #000;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Стили для кнопки "Вернуться наверх" */
+#backToTop {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: none;
+    z-index: 999;
+}
+
+#backToTop .btn {
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 18px;
+}
+
+/* Стили для карточек продуктов */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.product-card img {
+    height: 300px;
+    object-fit: contain;
+}
+
+.product-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.product-card .card-body p {
+    margin-bottom: auto;
+}
+
+/* Стили для секции "О нас" */
+#about {
+    position: relative;
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+/* Стили заголовка "О нас" */
+#about h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Стили для текста внутри секции "О нас" */
+#about p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Стили для изображения в секции "О нас" */
+#about .about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Добавляем анимацию при наведении */
+}
+
+/* Анимация при наведении на изображение */
+#about .about-image:hover {
+    transform: scale(1.05); /* Легкое увеличение изображения при наведении */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Кнопка "Свяжитесь с нами" под изображением */
+#about .btn {
+    background-color: #007bff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/* Кнопка при наведении */
+#about .btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px); /* Легкий подъем кнопки при наведении */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Тень для кнопки при наведении */
+}
+
+/* Центрирование кнопки под изображением */
+#about .text-center {
+    text-align: center;
+}
+
+/* Отступ сверху для контейнера с кнопкой */
+#about .mt-4 {
+    margin-top: 1.5rem;
+}
+
+/* Карточки команды с анимацией */
+.team-card {
+    width: 280px;
+    border: none;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Анимация при наведении на карточку команды */
+.team-card:hover {
+    transform: translateY(-10px); /* Подъем карточки при наведении */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для названия и текста в карточке команды */
+.team-card .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.team-card .card-text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Адаптивные стили для секции "О нас" */
+@media (max-width: 991px) {
+    #about h2 {
+        font-size: 2rem;
+    }
+    #about p {
+        font-size: 1rem;
+    }
+    #about .about-image {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    #about {
+        padding: 60px 0;
+    }
+    #about h2 {
+        font-size: 1.8rem;
+    }
+    #about p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #about {
+        padding: 50px 0;
+    }
+    #about h2 {
+        font-size: 1.6rem;
+    }
+    #about p {
+        font-size: 0.9rem;
+    }
+    #about .btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}
+
+
+
+
+/* Стили для секции "Наша команда" */
+.team-card {
+    border: none;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 0; /* Убираем большой отступ сверху */
+}
+
+.team-card img {
+    height: auto; /* Уменьшаем фиксированную высоту */
+    object-fit: cover;
+    width: 100%;
+    margin-bottom: 15px; /* Добавляем отступ между изображением и текстом */
+}
+
+h2.text-center {
+    font-size: 2rem;
+    margin-top: 50px; /* Добавляем верхний отступ вместо смещения */
+    margin-bottom: 20px; /* Отступ снизу */
+    position: static; /* Убираем относительное позиционирование */
+    /* Убраны top и другие позиционирующие свойства */
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px; /* Установите разумную максимальную ширину */
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Медиазапросы для адаптивности */
+@media (max-width: 767.98px) {
+    /* Корректировка высоты секции hero */
+    #hero {
+        height: 80vh;
+    }
+
+    /* Удаление фиксированной высоты для изображений */
+    .product-card img,
+    .team-card img {
+        height: auto;
+    }
+
+    /* Изменение порядка элементов в секции "О нас" */
+    #about .row {
+        flex-direction: column;
+    }
+
+    /* Центрирование текста в секции "О нас" */
+    #about .col-md-6 {
+        text-align: center;
+    }
+
+    #about img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+//* Секция "Наша команда" */
+#team {
+    padding: 50px 20px; /* Уменьшение верхнего и нижнего паддинга */
+    margin-bottom: 20px; /* Уменьшение нижнего отступа, чтобы секции не отстояли слишком далеко друг от друга */
+    background-color: #f9f9f9;
+}
+
+#team h2.text-center {
+    margin-top: 20px; /* Уменьшаем верхний отступ */
+    margin-bottom: 10px; /* Уменьшаем нижний отступ */
+    font-size: 2rem; /* Размер заголовка */
+}
+
+.team-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Центрируем карточки */
+    gap: 20px; /* Уменьшаем расстояние между карточками */
+    padding: 0 10px;
+}
+
+.team-card {
+    width: 280px; /* Ограничиваем ширину карточек */
+    border: none;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px; /* Уменьшаем отступ сверху для создания пространства */
+}
+
+
+/* Заголовок "Наша команда" */
+#team .team-title {
+    position: relative;
+    text-align: center;
+    font-size: 2.5rem; /* Размер заголовка */
+    margin-bottom: 50px; /* Достаточный отступ снизу, чтобы отделить заголовок от карточек */
+    color: #333;
+    font-weight: bold;
+}
+
+/* Контейнер для карточек команды */
+.team-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Центрируем карточки */
+    gap: 40px; /* Расстояние между карточками */
+    padding: 0 10px;
+}
+
+/* Карточка команды */
+.team-card {
+    width: 280px; /* Ограничиваем ширину карточек */
+    border: none;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Отступ сверху для создания пространства */
+}
+
+/* Стили для названия и текста в карточке */
+.team-card .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.team-card .card-text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Адаптивность секции "Наша команда" */
+@media (max-width: 991px) {
+    #team {
+        padding: 80px 15px 40px; /* Уменьшаем отступы для экранов поменьше */
+    }
+
+    #team .team-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .team-card-container {
+        gap: 30px;
+    }
+
+    .team-card {
+        width: 260px;
+    }
+}
+
+@media (max-width: 767px) {
+    #team {
+        padding: 60px 10px 30px;
+    }
+
+    #team .team-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .team-card {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 576px) {
+    #team {
+        padding: 50px 10px 20px;
+    }
+
+    #team .team-title {
+        font-size: 1.6rem;
+    }
+
+    .team-card .card-title {
+        font-size: 1.1rem;
+    }
+
+    .team-card .card-text {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+    /* Убираем смещение заголовка */
+    h2.text-center {
+        margin-top: 30px; /* Дополнительный отступ сверху */
+    }
+
+    /* Уменьшаем размер заголовка "Наша команда" */
+    #team h2.text-center {
+        font-size: 1.8rem;
+        margin-top: 20px; /* Дополнительный отступ сверху */
+    }
+
+    /* Уменьшаем отступы в секции "Свяжитесь с нами" */
+    #contact {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Заголовок секции "Наши Продукты" */
+#products {
+    padding: 20px 20px; /* Уменьшаем верхний и нижний padding для секции */
+    margin-top: 20px; /* Уменьшаем отступ между "Наша команда" и "Наши продукты" */
+    background-color: #ffffff; /* Цвет фона секции */
+}
+/* Заголовок "Наши продукты" */
+#products-title {
+    margin-top: 10px; /* Уменьшенный отступ сверху для пропорциональности */
+    margin-bottom: 10px; /* Уменьшенный отступ снизу */
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.2; /* Немного меньшая высота строки для лучшего размещения */
+    font-weight: bold;
+    color: #333;
+}
+
+/* Блок с табами (Протеин, Креатин, Бета-Аланин) */
+.tab-container {
+    display: flex;
+    justify-content: center; /* Центрируем табы */
+    align-items: center;
+    gap: 15px; /* Добавляем расстояние между табами для визуального равновесия */
+    margin-bottom: 20px; /* Отступ снизу табов, чтобы они не "слипались" с продуктами */
+}
+
+.tab-container button {
+    padding: 10px 20px; /* Увеличенный паддинг для лучшего кликабельного пространства */
+    border-radius: 10px; /* Одинаковый радиус для всех кнопок */
+    font-size: 1rem; /* Подходящий размер шрифта */
+    transition: background-color 0.3s, transform 0.3s;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень для эффекта объема */
+}
+
+.tab-container button.active {
+    background: linear-gradient(to right, #00aaff, #0077cc); /* Градиент для активного таба */
+    color: #ffffff;
+    font-weight: bold;
+    transform: scale(1.05); /* Легкое увеличение размера активной кнопки */
+}
+
+.tab-container button:hover {
+    background: #f0f0f0; /* Легкое изменение фона при наведении */
+    cursor: pointer;
+}
+
+#products h2.text-center {
+    margin-top: 20px; /* Уменьшение верхнего отступа заголовка */
+    margin-bottom: 15px; /* Уменьшение отступа снизу */
+    font-size: 2rem; /* Размер заголовка */
+}
+
+/* Общие стили для всех секций сайта, чтобы уменьшить пустое пространство между секциями */
+section {
+    margin-bottom: 2rem; /* Уменьшение нижних отступов между секциями */
+}
+
+/* Адаптивность для секций на маленьких экранах */
+@media (max-width: 767.98px) {
+    #team {
+        padding: 40px 15px; /* Корректировка паддинга для маленьких экранов */
+    }
+
+    #team h2.text-center {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    #products {
+        padding: 20px 10px; /* Корректировка паддинга для секции "Наши продукты" */
+    }
+
+    #products h2.text-center {
+        font-size: 1.6rem;
+    }
+
+    .team-card {
+        width: 90%; /* Карточки на маленьких экранах занимают почти всю ширину */
+        margin: 0 auto;
+    }
+}
+
+
+    /* Уменьшаем отступы в секции "О нас" */
+    #about {
+        padding: 40px 0;
+    }
+
+    /* Уменьшение размера логотипа в навбаре */
+    .navbar-brand img {
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    /* Уменьшение размера заголовков */
+    .brand-text .main-title {
+        font-size: 1.2rem;
+    }
+
+    .brand-text .subtitle {
+        font-size: 0.75rem;
+    }
+
+    /* Корректировка карусели */
+    #hero .carousel-caption {
+        top: 55%;
+        padding: 10px;
+    }
+
+    #hero .carousel-caption h1 {
+        font-size: 1.8rem;
+    }
+
+    #hero .carousel-caption p {
+        font-size: 1rem;
+    }
+
+    #hero .carousel-caption .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    /* Изменение размеров кнопки "Вернуться наверх" */
+    #backToTop .btn {
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+
+    /* Изменение размера модального окна */
+    .modal-dialog {
+        max-width: 90%;
+    }
+
+    /* Корректировка формы в модальном окне */
+    #orderModal .modal-body {
+        padding: 15px;
+    }
+
+    #orderModal .modal-body img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Дополнительные корректировки кнопки "Свяжитесь с нами" */
+    .btn.pulse-button {
+        margin-top: 15px;
+    }
+
+    /* Устранение больших отступов между секциями */
+    section {
+        margin-bottom: 2rem; /* Уменьшение нижних отступов между секциями */
+    }
+
+    /* Корректировка заголовка "Продукты" */
+    #products h2.text-center {
+        margin-bottom: 1.5rem; /* Уменьшение отступа снизу */
+        position: static; /* Убираем относительное позиционирование */
+        top: 0; /* Убираем смещение */
+        margin-top: 50px; /* Добавляем верхний отступ */
+    }
+
+    /* Корректировка заголовка "Свяжитесь с нами" */
+    #contact h2.text-center {
+        margin-bottom: 1.5rem; /* Уменьшение отступа снизу */
+    }
+}
+
+@media (max-width: 576px) {
+    /* Дополнительные корректировки для очень маленьких экранов */
+    /* Например, уменьшение размера шрифтов, паддингов и т.д. */
+    /* Можно добавить по необходимости */
+}
+
+/* Стили для футера */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer .social-links a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.footer .social-links a:hover {
+    color: #ffc107;
+}
+
+.footer-divider {
+    border-color: #444;
+    margin: 20px 0;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .footer-logo {
+        margin-bottom: 0;
+    }
+}
+
+/* Логотип в подвале */
+.footer-logo img {
+    height: 60px; /* Подгонка размера для футера */
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.8); /* Белая подложка для подвала */
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Анимация при наведении */
+}
+/* Стили для вкладок продуктов */
+.nav-tabs {
+    display: flex;
+    justify-content: space-around; /* Распределение вкладок с равным промежутком */
+    flex-wrap: nowrap; /* Запрещаем перенос на новую строку */
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0;
+    overflow-x: auto; /* Позволяем горизонтальную прокрутку, если не помещается */
+}
+
+.nav-tabs .nav-item {
+    flex-shrink: 0; /* Запрещаем уменьшать размер вкладки */
+    max-width: 160px; /* Ограничение максимальной ширины вкладки */
+}
+
+.nav-tabs .nav-link {
+    display: block;
+    padding: 10px 12px; /* Паддинг для удобства */
+    color: #333;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin: 0 5px; /* Немного отступа между вкладками */
+}
+
+.nav-tabs .nav-link:hover {
+    color: #0056b3;
+    background-color: #e8e8e8;
+}
+
+.nav-tabs .nav-link.active {
+    color: #fff;
+    background: linear-gradient(45deg, #007bff, #00b8ff);
+    box-shadow: 0px 4px 6px rgba(0, 123, 255, 0.3);
+    border: none;
+}
+
+/* Медиазапросы для маленьких экранов */
+@media (max-width: 576px) {
+    .nav-tabs {
+        justify-content: flex-start; /* Выравниваем по началу на узких экранах */
+        overflow-x: auto; /* Добавляем прокрутку, если вкладки не помещаются */
+        white-space: nowrap; /* Запрещаем перенос на новую строку */
+        -webkit-overflow-scrolling: touch; /* Улучшенное поведение прокрутки на мобильных устройствах */
+    }
+
+    .nav-tabs .nav-link {
+        font-size: 0.9rem; /* Уменьшаем размер текста */
+        padding: 8px 10px; /* Меньше паддинга для вкладок на маленьких экранах */
+    }
+}
+/* Общие стили для всех секций */
+section {
+    margin-top: 20px;  /* Уменьшенный отступ сверху */
+    margin-bottom: 20px;  /* Уменьшенный отступ снизу */
+    padding: 20px 0;  /* Равномерные внутренние отступы сверху и снизу */
+}
+
+/* Стили для секции "О нас" */
+#about {
+    margin-top: 20px;  /* Немного большее пространство сверху для выделения */
+    padding: 30px 0;  /* Внутренние отступы для большей читаемости */
+}
+
+/* Специальные стили для карты */
+#map {
+    margin-top: 10px; /* Уменьшаем верхний отступ от предыдущего блока */
+    margin-bottom: 10px; /* Уменьшаем нижний отступ, чтобы карта была ближе к следующей секции */
+}
+
+/* Стили для блока "Отзывы наших клиентов" */
+#reviews {
+    margin-top: 15px;  /* Отступ сверху, чуть больше, чтобы смотрелось визуально лучше */
+    padding-top: 10px; /* Добавлен небольшой внутренний отступ сверху */
+}
+#reviews h2.text-center {
+    margin-top: 10px;  /* Расстояние между картой или предыдущим блоком */
+    margin-bottom: 20px;  /* Расстояние до следующего блока с отзывами */
+    text-align: center;  /* Центрирование текста */
+    font-size: 2rem;  /* Размер шрифта для визуального акцента */
+    position: static;  /* Убираем фиксированное позиционирование, если есть */
+}
+
+
+/* Мобильные стили для уменьшения отступов */
+@media (max-width: 576px) {
+    section {
+        margin-top: 10px;  /* Меньший отступ сверху для мобильных */
+        margin-bottom: 10px;  /* Меньший отступ снизу для мобильных */
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #map {
+        margin-top: 5px; /* Еще меньше отступ на мобильных */
+        margin-bottom: 5px;
+    }
+
+    #reviews {
+        margin-top: 10px; /* Меньший отступ для отзывов на мобильных */
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="Логотип Спортпит Портал" loading="lazy">
+                <div class="brand-text">
+                    <span class="main-title">Спортпит Портал</span>
+                    <span class="subtitle">Продажа спортивного питания</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav me-3">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#hero">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Продукты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">О нас</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews">Отзывы</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный баннер с каруселью -->
+    <section id="hero">
+        <video class="bg-video" autoplay muted loop>
+            <source src="fon.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+        <div class="overlay"></div>
+
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="7000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Слайд 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Слайд 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Слайд 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <!-- Слайд 1 -->
+                <div class="carousel-item active">
+                    <div class="carousel-caption">
+                        <h1 data-aos="fade-down">Добро пожаловать в Спортпит Портал</h1>
+                        <p data-aos="fade-up" data-aos-delay="200">Ваш надежный партнер в мире спортивного питания</p>
+                        <a href="#products" class="btn btn-warning btn-lg" data-aos="fade-up" data-aos-delay="400">Посмотреть продукты</a>
+                    </div>
+                </div>
+                <!-- Слайд 2: Скидки и счетчик -->
+                <div class="carousel-item">
+                    <div class="carousel-caption">
+                        <h1 data-aos="fade-down">Супер Скидки!</h1>
+                        <p data-aos="fade-up" data-aos-delay="200">Скидка 20% на все товары!</p>
+                        <h2 data-aos="fade-up" data-aos-delay="400">До конца акции:</h2>
+                        <div class="countdown" id="countdown" data-aos="fade-up" data-aos-delay="600">
+                            <span id="days">00</span> дней 
+                            <span id="hours">00</span> часов 
+                            <span id="minutes">00</span> минут 
+                            <span id="seconds">00</span> секунд
+                        </div>
+                        <a href="#products" class="btn btn-warning btn-lg" data-aos="fade-up" data-aos-delay="800">Купить сейчас</a>
+                    </div>
+                </div>
+                <!-- Слайд 3: Почему именно мы -->
+                <div class="carousel-item">
+                    <div class="carousel-caption">
+                        <h1 data-aos="fade-down">Почему именно мы?</h1>
+                        <p data-aos="fade-up" data-aos-delay="200">Мы предлагаем только качественные продукты и индивидуальный подход к каждому клиенту.</p>
+                        <a href="#about" class="btn btn-warning btn-lg" data-aos="fade-up" data-aos-delay="400">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Элементы управления каруселью -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Секция "О нас" -->
+<section id="about" class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Блок с текстом -->
+            <div class="col-md-6" data-aos="fade-right">
+                <h2 class="mb-4" style="font-size: 2.5rem;">О нас</h2>
+                <p style="font-size: 1.1rem;">Мы - «Спортпит Портал», ваш надежный партнер в мире спортивного питания. С момента нашего основания мы стремимся предоставлять нашим клиентам только высококачественные добавки, которые поддерживают их в достижении спортивных целей.</p>
+                <p style="font-size: 1.1rem;">В нашем ассортименте вы найдете широкий выбор продукции, включая протеины, креатины, бета-аланин. Мы искренне верим, что качественное питание играет ключевую роль в тренерском процессе, и поэтому работаем только с проверенными производителями, которые соответствуют самым высоким стандартам качества.</p>
+                <p style="font-size: 1.1rem;">Мы понимаем, что каждый наш клиент уникален, и у него есть свои цели и потребности. Наша команда, состоящая из опытных специалистов в области питания и фитнеса, готова предоставить вам индивидуальные рекомендации. Мы уверены, что с нами вы сможете достичь незабываемых результатов и ощутимого прогресса!</p>
+                <p style="font-size: 1.1rem;">Кроме того, мы всегда следим за последними тенденциями в мире спортивного питания и регулярно обновляем наш ассортимент. Мы внедряем новые технологии и продукты, чтобы вы всегда имели доступ к самым современным решениям для вашего здоровья и производительности.</p>
+            </div>
+            <!-- Блок с картинками и кнопкой -->
+            <div class="col-md-6" data-aos="fade-left">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="position-relative">
+                            <img src="https://www.zdorovka.ru/pictures/2283/pictures429-2-20-08-2020-15-13-55.jpg" alt="О нас 2" class="img-fluid about-image">
+                        </div>
+                        <!-- Кнопка под картинкой -->
+                        <div class="text-center mt-4">
+                            <a href="#contact" class="btn btn-primary pulse-button">Свяжитесь с нами</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Секция "Наша команда" -->
+<section id="team" class="py-3 bg-light"> <!-- Изменено на py-3 -->
+    <div class="container">
+        <h2 class="text-center mb-5 section-title" data-aos="fade-up">Наша команда</h2>
+        <div class="row">
+            <!-- Член команды 1 -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card team-card mb-4">
+                    <img src="https://img.freepik.com/free-photo/handsome-bearded-guy-posing-against-white-wall_273609-20597.jpg?ga=GA1.1.507446280.1719140582&semt=ais_hybrid" class="card-img-top" alt="Иван Иванов">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Иван Иванов</h5>
+                        <p class="card-text">Основатель и директор</p>
+                        <p class="card-text"><i class="fas fa-envelope"></i> ivan@sportpitportal.ru</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Член команды 2 -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card team-card mb-4">
+                    <img src="https://img.freepik.com/free-photo/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.jpg?ga=GA1.1.507446280.1719140582&semt=ais_hybrid" class="card-img-top" alt="Мария Смирнова">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Мария Смирнова</h5>
+                        <p class="card-text">Менеджер по продажам</p>
+                        <p class="card-text"><i class="fas fa-envelope"></i> maria@sportpitportal.ru</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Член команды 3 -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card team-card mb-4">
+                    <img src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?ga=GA1.1.507446280.1719140582&semt=ais_hybrid" class="card-img-top" alt="Алексей Петров">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Алексей Петров</h5>
+                        <p class="card-text">Специалист по маркетингу</p>
+                        <p class="card-text"><i class="fas fa-envelope"></i> alexey@sportpitportal.ru</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Добавьте больше членов команды по необходимости -->
+        </div>
+    </div>
+</section>
+
+    <!-- Продукты -->
+    <section class="py-5" id="products">
+        <div class="content-container container">
+            <h2 class="text-center mb-5 section-title" data-aos="fade-up">Наши Продукты</h2>
+            <!-- Вкладки для категорий продуктов -->
+            <ul class="nav nav-tabs mb-4" id="productTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="protein-tab" data-bs-toggle="tab" data-bs-target="#protein" type="button" role="tab" aria-controls="protein" aria-selected="true">Протеин</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="creatine-tab" data-bs-toggle="tab" data-bs-target="#creatine" type="button" role="tab" aria-controls="creatine" aria-selected="false">Креатин</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="beta-alanine-tab" data-bs-toggle="tab" data-bs-target="#beta-alanine" type="button" role="tab" aria-controls="beta-alanine" aria-selected="false">Бета-Аланин</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="productTabsContent">
+                <!-- Протеин -->
+                <div class="tab-pane fade show active" id="protein" role="tabpanel" aria-labelledby="protein-tab">
+                    <div class="row">
+                        <!-- Продукт Протеин 1 -->
+                        <div class="col-md-4 col-sm-6 fade-in" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card product-card mb-4">
+                                <img src="https://expertology.ru/upload/medialibrary/eea/Ultimate-Nutrition-Prostar-100_-Whey-Protein.webp" class="card-img-top" alt="MaxPower Whey Gold">
+                                <div class="card-body">
+                                    <h5 class="card-title">MaxPower Whey Gold</h5>
+                                    <p class="card-text">Высококачественный сывороточный протеин для наращивания мышечной массы.</p>
+                                    <p><strong>Цена:</strong> 2500₽</p>
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal"
+                                       data-product-name="MaxPower Whey Gold"
+                                       data-product-description="Высококачественный сывороточный протеин для наращивания мышечной массы."
+                                       data-product-price="2500₽"
+                                       data-product-image="https://expertology.ru/upload/medialibrary/eea/Ultimate-Nutrition-Prostar-100_-Whey-Protein.webp"
+                                       data-composition-image="https://sportivnoepitanie.ru/img/item/big/ultimate-nutrition-whey-gold-facts.jpg">
+                                       Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Продукт Протеин 2 -->
+                        <div class="col-md-4 col-sm-6 fade-in" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card product-card mb-4">
+                                <img src="https://good-tabs.ru/upload/medialibrary/4a5/nhbgjwmfju2qurokf5ztk5vvhmohjdm6.jpeg" class="card-img-top" alt="MaxPower Plant Fusion">
+                                <div class="card-body">
+                                    <h5 class="card-title">MaxPower Plant Fusion</h5>
+                                    <p class="card-text">Растительный протеин для веганов и аллергиков.</p>
+                                    <p><strong>Цена:</strong> 2200₽</p>
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal"
+                                       data-product-name="MaxPower Plant Fusion"
+                                       data-product-description="Растительный протеин для веганов и аллергиков."
+                                       data-product-price="2200₽"
+                                       data-product-image="https://good-tabs.ru/upload/medialibrary/4a5/nhbgjwmfju2qurokf5ztk5vvhmohjdm6.jpeg"
+                                       data-composition-image="https://sportivnoepitanie.ru/img/item/big/gold-standard-100-whey-10lb-choco-sostav.jpg">
+                                       Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Продукт Протеин 3 -->
+                        <div class="col-md-4 col-sm-6 fade-in" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card product-card mb-4">
+                                <img src="https://whey.kz/wp-content/uploads/2016/07/maxler-golden-whey-2270-300x300.jpg" class="card-img-top" alt="MaxPower Casein Elite">
+                                <div class="card-body">
+                                    <h5 class="card-title">MaxPower Casein Elite</h5>
+                                    <p class="card-text">Медленно усваиваемый протеин для ночного восстановления.</p>
+                                    <p><strong>Цена:</strong> 2700₽</p>
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal"
+                                       data-product-name="MaxPower Casein Elite"
+                                       data-product-description="Медленно усваиваемый протеин для ночного восстановления."
+                                       data-product-price="2700₽"
+                                       data-product-image="https://whey.kz/wp-content/uploads/2016/07/maxler-golden-whey-2270-300x300.jpg"
+                                       data-composition-image="https://sportivnoepitanie.ru/img/item/big/maxler-whey-protein-ultrafiltration-facts.jpg">
+                                       Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Креатин -->
+                <div class="tab-pane fade" id="creatine" role="tabpanel" aria-labelledby="creatine-tab">
+                    <div class="row">
+                        <!-- Продукт Креатин 1 -->
+                        <div class="col-md-4 col-sm-6 fade-in" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card product-card mb-4">
+                                <img src="https://pitprofi.com/upload/medialibrary/983/fadu5yxr3k18fhem0h9q377to9zox02x.jpeg" class="card-img-top" alt="Creatine MaxBoost">
+                                <div class="card-body">
+                                    <h5 class="card-title">Creatine MaxBoost</h5>
+                                    <p class="card-text">Креатин для увеличения силы и выносливости.</p>
+                                    <p><strong>Цена:</strong> 1800₽</p>
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal"
+                                       data-product-name="Creatine MaxBoost"
+                                       data-product-description="Креатин для увеличения силы и выносливости."
+                                       data-product-price="1800₽"
+                                       data-product-image="https://pitprofi.com/upload/medialibrary/983/fadu5yxr3k18fhem0h9q377to9zox02x.jpeg"
+                                       data-composition-image="https://sportivnoepitanie.ru/img/item/big/optimum-creatine-2500-caps-facts.jpg">
+                                       Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Продукт Креатин 2 -->
+                        <div class="col-md-4 col-sm-6 fade-in" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card product-card mb-4">
+                                <img src="https://www.expertcen.ru/uploads/article/rating/2018/05/1045/offer/330_c47600eb05239e7c573948269131a785.jpeg" class="card-img-top" alt="Creatine PureCharge">
+                                <div class="card-body">
+                                    <h5 class="card-title">Creatine PureCharge</h5>
+                                    <p class="card-text">Чистый креатин без добавок для максимальной эффективности.</p>
+                                    <p><strong>Цена:</strong> 2000₽</p>
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal"
+                                       data-product-name="Creatine PureCharge"
+                                       data-product-description="Чистый креатин без добавок для максимальной эффективности."
+                                       data-product-price="2000₽"
+                                       data-product-image="https://www.expertcen.ru/uploads/article/rating/2018/05/1045/offer/330_c47600eb05239e7c573948269131a785.jpeg"
+                                       data-composition-image="https://sportivnoepitanie.ru/img/item/big/olimp-creatine-xplode-powder-facts-2.jpg">
+                                       Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Продукт Креатин 3 -->
+                        <div class="col-md-4 col-sm-6 fade-in" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card product-card mb-4">
+                                <img src="https://pitprofi.com/upload/medialibrary/317/yzuzqqaq2cn3ks6hbrd1j5c9bph20iv0.jpeg" class="card-img-top" alt="Creatine EnduraForce">
+                                <div class="card-body">
+                                    <h5 class="card-title">Creatine EnduraForce</h5>
+                                    <p class="card-text">Креатин для улучшения выносливости и восстановления.</p>
+                                    <p><strong>Цена:</strong> 1900₽</p>
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal"
+                                       data-product-name="Creatine EnduraForce"
+                                       data-product-description="Креатин для улучшения выносливости и восстановления."
+                                       data-product-price="1900₽"
+                                       data-product-image="https://pitprofi.com/upload/medialibrary/317/yzuzqqaq2cn3ks6hbrd1j5c9bph20iv0.jpeg"
+                                       data-composition-image="https://sportivnoepitanie.ru/img/item/big/mutant-creakong-facts.jpg">
+                                       Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Бета-Аланин -->
+                <div class="tab-pane fade" id="beta-alanine" role="tabpanel" aria-labelledby="beta-alanine-tab">
+                    <div class="row">
+                        <!-- Продукт Бета-Аланин 1 -->
+                        <div class="col-md-4 col-sm-6 fade-in" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card product-card mb-4">
+                                <img src="https://shop-atlet.ru/wa-data/public/shop/products/89/65/16589/images/10738/10738.970.jpg" class="card-img-top" alt="Beta-Alanine StaminaX">
+                                <div class="card-body">
+                                    <h5 class="card-title">Beta-Alanine StaminaX</h5>
+                                    <p class="card-text">Бета-аланин для увеличения выносливости.</p>
+                                    <p><strong>Цена:</strong> 1500₽</p>
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal"
+                                       data-product-name="Beta-Alanine StaminaX"
+                                       data-product-description="Бета-аланин для увеличения выносливости."
+                                       data-product-price="1500₽"
+                                       data-product-image="https://shop-atlet.ru/wa-data/public/shop/products/89/65/16589/images/10738/10738.970.jpg"
+                                       data-composition-image="https://sportivnoepitanie.ru/img/item/big/olimp-beta-alanine-xplode-facts.jpg">
+                                       Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Продукт Бета-Аланин 2 -->
+                        <div class="col-md-4 col-sm-6 fade-in" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card product-card mb-4">
+                                <img src="https://pittop.ru/5524-large_default/beta-alanine-powder-203-gr-optimum-nutrition.jpg" class="card-img-top" alt="Beta-Alanine PowerRush">
+                                <div class="card-body">
+                                    <h5 class="card-title">Beta-Alanine PowerRush</h5>
+                                    <p class="card-text">Бета-аланин для повышения силовых показателей.</p>
+                                    <p><strong>Цена:</strong> 1600₽</p>
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal"
+                                       data-product-name="Beta-Alanine PowerRush"
+                                       data-product-description="Бета-аланин для повышения силовых показателей."
+                                       data-product-price="1600₽"
+                                       data-product-image="https://pittop.ru/5524-large_default/beta-alanine-powder-203-gr-optimum-nutrition.jpg"
+                                       data-composition-image="https://sportivnoepitanie.ru/img/item/big/optimum-nutrition-beta-alanine-powder-sostav.jpg">
+                                       Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Продукт Бета-Аланин 3 -->
+                        <div class="col-md-4 col-sm-6 fade-in" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card product-card mb-4">
+                                <img src="https://maistassportui.lt/wp-content/uploads/2024/05/Beta-Alanine.jpg" class="card-img-top" alt="Beta-Alanine EndurePro">
+                                <div class="card-body">
+                                    <h5 class="card-title">Beta-Alanine EndurePro</h5>
+                                    <p class="card-text">Бета-аланин для длительных тренировок.</p>
+                                    <p><strong>Цена:</strong> 1550₽</p>
+                                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal"
+                                       data-product-name="Beta-Alanine EndurePro"
+                                       data-product-description="Бета-аланин для длительных тренировок."
+                                       data-product-price="1550₽"
+                                       data-product-image="https://maistassportui.lt/wp-content/uploads/2024/05/Beta-Alanine.jpg"
+                                       data-composition-image="https://sportivnoepitanie.ru/img/item/big/scitec-nutrition-beta-alanine-facts.jpg">
+                                       Купить
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="bg-light py-5" id="contact">
+        <div class="content-container container">
+            <h2 class="text-center mb-5 section-title" data-aos="fade-up">Свяжитесь с нами</h2>
+            <div class="row">
+                <!-- Форма обратной связи -->
+                <div class="col-md-6 mb-4" data-aos="fade-right">
+                    <form action="https://formspree.io/f/your-form-id" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Имя</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="_replyto" placeholder="Ваш email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Сообщение</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Ваше сообщение" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form>
+                </div>
+                <!-- Контактная информация и карта -->
+                <div class="col-md-6" data-aos="fade-left">
+                    <h5>Наши контакты</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Спортивная, д.1</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (123) 456-78-90</p>
+                    <p><i class="fas fa-envelope"></i> <a=mailto:sportpitportable@google.com">SPORTPITPORTABLE@GOOGLE.COM</a></p>
+                    <!-- Google Карта -->
+                    <div class="mt-4">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.104210262993!2d37.617635175621175!3d55.75582698056186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54af1c3d5b35b%3A0x8c45f0f5e6f2f9a2!2z0JHQtdC10L3RgdGC0LDRgNCw0YDQvtC10LvQtdC90YPRgdC60LjQstCw0L3QsNGPINC60LDRgNC-0LTRg9C10LrQsCDQvtC10LrQuNC-0LTQuNGPINC00LjQuNGM0YHQvdCw0YvQuNGG0LXQuNC5!5e0!3m2!1sru!2sru!4v1698553720816!5m2!1sru!2sru"
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "Отзывы" -->
+    <section id="reviews" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title" data-aos="fade-up">Отзывы наших клиентов</h2>
+            <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel" style="position: relative;">
+                <div class="carousel-inner">
+                    <!-- Отзыв 1 -->
+                    <div class="carousel-item active">
+                        <div class="card review-card mb-4">
+                            <div class="card-body">
+                                <p class="card-text">«Отличный магазин! Быстрая доставка и высокое качество продуктов. Рекомендую всем спортсменам!»</p>
+                                <h5 class="card-title">- Анна К.</h5>
+                                <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Анна К." class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Отзыв 2 -->
+                    <div class="carousel-item">
+                        <div class="card review-card mb-4">
+                            <div class="card-body">
+                                <p class="card-text">«Покупал протеин Whey Gold. Отличный вкус и отлично усваивается. Спасибо за консультацию!»</p>
+                                <h5 class="card-title">- Дмитрий С.</h5>
+                                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Дмитрий С." class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Отзыв 3 -->
+                    <div class="carousel-item">
+                        <div class="card review-card mb-4">
+                            <div class="card-body">
+                                <p class="card-text">«Прекрасный выбор и отличный сервис. Я впечатлен!»</p>
+                                <h5 class="card-title">- Сергей П.</h5>
+                                <img src="https://l-userpic.livejournal.com/103387064/23585211" alt="Сергей П." class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Отзыв 4 -->
+                    <div class="carousel-item">
+                        <div class="card review-card mb-4">
+                            <div class="card-body">
+                                <p class="card-text">«Весьма доволен покупками. Отличное качество за разумные деньги!»</p>
+                                <h5 class="card-title">- Марина Л.</h5>
+                                <img src="https://l-userpic.livejournal.com/121969394/17854679" alt="Марина Л." class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Отзыв 5 -->
+                    <div class="carousel-item">
+                        <div class="card review-card mb-4">
+                            <div class="card-body">
+                                <p class="card-text">«Я всегда доверяю этому магазину. Продукция всегда на высоте!»</p>
+                                <h5 class="card-title">- Олег F.</h5>
+                                <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Олег F." class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Отзыв 6 -->
+                    <div class="carousel-item">
+                        <div class="card review-card mb-4">
+                            <div class="card-body">
+                                <p class="card-text">«Сервис на высшем уровне! Имеют отличные продукты по разумным ценам!»</p>
+                                <h5 class="card-title">- Вероника Т.</h5>
+                                <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Вероника Т." class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Элементы управления каруселью -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Предыдущий</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Следующий</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer" id="top">
+        <div class="container">
+            <!-- Contact Information -->
+            <div class="row">
+                <div class="col-md-4 text-md-start text-center mb-3 mb-md-0">
+                    <p><i class="fas fa-map-marker-alt"></i> Россия, 125040, г. Москва, Ленинский проспект, дом 5, строение 9, номер квартиры 5</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (932) 417-99-99</p>
+                    <p><i class="fas fa-envelope"></i> <a="mailto:sportpitportable@google.com">SPORTPITPORTABLE@GOOGLE.COM</a></p>
+                </div>
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <h5>ГРАФИК РАБОТЫ:</h5>
+                    <p>Пн-Пт с 9:00 до 18:00</p>
+                    <p>Сб-Вс с 10:00 до 17:00</p>
+                </div>
+                <div class="col-md-4 text-md-end text-center">
+                    <!-- Social Links -->
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Divider Line -->
+            <hr class="footer-divider">
+            <!-- Logo, Copyright and Tax Information -->
+            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <div class="footer-logo mb-3 mb-md-0">
+                    <a href="#top">
+                        <img src="logo.png" alt="Логотип" class="footer-logo-img">
+                    </a>
+                </div>
+                <p class="mb-0">ИНН: 772176645264 | ОГРНИП: 319774600194303</p>
+                <p class="mb-0">COPYRIGHT © 2023 - 2024 СПОРТПИТ ПОРТАЛ</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Вернуться наверх" -->
+    <div id="backToTop">
+        <button class="btn btn-primary"><i class="fas fa-chevron-up"></i></button>
+    </div>
+
+    <!-- Модальное окно для заказа -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: #f8f9fa;">
+                <form action="https://formspree.io/f/your-order-form-id" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderModalLabel">Заказ</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <input type="hidden" name="product" id="productName">
+                            <p id="productDescription" class="mt-3"></p>
+                            <p><strong>Цена:</strong> <span id="productPrice"></span></p>
+
+
+                            <!-- ФИО -->
+                            <div class="mb-3">
+                                <label for="receiverFullName" class="form-label">Получатель (ФИО полностью)</label>
+                                <input type="text" class="form-control" id="receiverFullName" name="receiver_name" placeholder="Иванов Иван Иванович" required>
+                            </div>
+                            
+                            <!-- Телефон с маской -->
+                            <div class="mb-3">
+                                <label for="customerPhone" class="form-label">Телефон</label>
+                                <input type="text" class="form-control" id="customerPhone" name="phone" placeholder="+7 (999) 999-99-99" required>
+                            </div>
+
+                            <!-- Выбор способа доставки -->
+                            <div class="mb-3">
+                                <label for="deliveryMethod" class="form-label">Выберите способ доставки</label>
+                                <select class="form-select" id="deliveryMethod" name="delivery_method" required>
+                                    <option value="" disabled selected>Выберите способ доставки</option>
+                                    <option value="sdek">СДЭК</option>
+                                    <option value="post">Почта России</option>
+                                </select>
+                            </div>
+
+                            <!-- Доставка информации -->
+                            <div id="deliveryInfo" class="mb-3" style="display: none;">
+                                <h6>Доставка</h6>
+                                <p id="sdekInfo" style="display: none;">Доставка в СДЭК до пункта выдачи 11 дней от 680,99 р.</p>
+                            </div>
+
+                            <!-- Город -->
+                            <div class="mb-3">
+                                <label for="customerCity" class="form-label">Город</label>
+                                <input type="text" class="form-control" id="customerCity" name="city" placeholder="Москва" required>
+                            </div>
+
+                            <!-- Адрес -->
+                            <div class="mb-3">
+                                <label for="customerAddress" class="form-label">Адрес</label>
+                                <input type="text" class="form-control" id="customerAddress" name="address" placeholder="Россия, г Москва" required>
+                            </div>
+
+                            <!-- Пункт получения -->
+                            <div class="mb-3">
+                                <label for="pickupPoint" class="form-label">Пункт получения</label>
+                                <select class="form-select" id="pickupPoint" name="pickup_point" required>
+                                    <option value="" disabled selected>Выберите пункт получения</option>
+                                    <option value="point1">Пункт 1 - Адрес 1</option>
+                                    <option value="point2">Пункт 2 - Адрес 2</option>
+                                </select>
+                            </div>
+
+                            <!-- Комментарий -->
+                            <div class="mb-3">
+                                <label for="customerComment" class="form-label">Комментарий</label>
+                                <textarea class="form-control" id="customerComment" name="comment" rows="3" placeholder="Ваш комментарий"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-primary">Отправить заказ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS и зависимости -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS для анимации -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Инициализация AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Скролл вверх при клике на логотип в футере
+        document.querySelector('.footer-logo a').addEventListener('click', function(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Отображение информации о доставке
+        document.getElementById('deliveryMethod').addEventListener('change', function() {
+            var deliveryInfo = document.getElementById('deliveryInfo');
+            var sdekInfo = document.getElementById('sdekInfo');
+            
+            if (this.value === "sdek") {
+                deliveryInfo.style.display = 'block';
+                sdekInfo.style.display = 'block';
+            } else {
+                deliveryInfo.style.display = 'none';
+                sdekInfo.style.display = 'none';
+            }
+        });
+
+        // Маска для телефонного номера
+        const phoneInput = document.getElementById('customerPhone');
+        phoneInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, ''); // Убираем все нецифровые символы
+            if (value.length > 10) {
+                value = value.slice(0, 10); // Ограничиваем заполнение до 10 цифр
+            }
+            const formattedValue = value.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, '+$1 ($2) $3-$4'); // Форматируем результат
+            e.target.value = formattedValue;
+        });
+
+        // Установка конечной даты и времени (пример: 3 дня, 12 часов от текущего времени)
+        const endDate = new Date(Date.now() + (3 * 24 * 60 * 60 * 1000) + (12 * 60 * 60 * 1000)); 
+        
+        function updateCountdown() {
+            const now = new Date();
+            const timeLeft = endDate - now;
+        
+            if (timeLeft <= 0) {
+                document.getElementById("countdown").innerHTML = "Акция закончилась!";
+                clearInterval(countdownInterval);
+                return;
+            }
+        
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        
+            // Обновление элементов на странице
+            document.getElementById("days").textContent = String(days).padStart(2, '0');
+            document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+        }
+        
+        // Запуск обратного отсчета каждую секунду
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();  // Первоначальный вызов для заполнения значений сразу
+
+        // Изменение стиля навбара при прокрутке
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Показать кнопку "Вернуться наверх"
+            const backToTop = document.getElementById('backToTop');
+            backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+
+        // Настройка модального окна при клике на кнопку "Купить"
+        var orderModal = document.getElementById('orderModal');
+        orderModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget; // Кнопка, которая открыла модальное окно
+            var productName = button.getAttribute('data-product-name');
+            var description = button.getAttribute('data-product-description');
+            var price = button.getAttribute('data-product-price');
+            var productImage = button.getAttribute('data-product-image');
+            var compositionImage = button.getAttribute('data-composition-image'); // Получаем изображение состава
+
+            var modalTitle = orderModal.querySelector('.modal-title');
+            var modalBodyProduct = orderModal.querySelector('#productDescription');
+            var modalBodyPrice = orderModal.querySelector('#productPrice');
+            var modalBodyName = orderModal.querySelector('#productName');
+            
+            // Устанавливаем изображения в модальном окне
+            var modalBodyImage = orderModal.querySelector('#productImage');
+            var modalBodyCompositionImage = orderModal.querySelector('#compositionImage');
+
+            modalTitle.textContent = 'Заказ: ' + productName;
+            modalBodyProduct.textContent = description;
+            modalBodyPrice.textContent = price;
+            modalBodyName.value = productName;
+            
+            modalBodyImage.src = productImage; // Устанавливаем изображение продукта
+            modalBodyCompositionImage.src = compositionImage; // Устанавливаем изображение состава
+        });
+
+        // Кнопка "Вернуться наверх"
+        document.getElementById('backToTop').addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>
